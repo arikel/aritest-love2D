@@ -29,29 +29,34 @@ function randRect(nb)
 	
 end
 
+function drawText(text, x, y)
+	love.graphics.setColor(0, 0, 0, 1)
+	love.graphics.print(text, x+1, y)
+	love.graphics.print(text, x-1, y)
+	love.graphics.print(text, x, y-1)
+	love.graphics.print(text, x, y+1)
+	
+	love.graphics.print(text, x+2, y)
+	love.graphics.print(text, x-2, y)
+	love.graphics.print(text, x, y-2)
+	love.graphics.print(text, x, y+2)
+	
+	love.graphics.print(text, x+1, y+1)
+	love.graphics.print(text, x-1, y+1)
+	love.graphics.print(text, x-1, y-1)
+	love.graphics.print(text, x+1, y-1)
+	
+	love.graphics.setColor(1, 1, 1, 1)
+	love.graphics.print(text, x, y)
+end
+
+
 function love.draw()
 	randRect(5)
 	love.graphics.setCanvas()
 	love.graphics.draw(canvas)
 	
-	love.graphics.setColor(0, 0, 0, 1)
-	love.graphics.print("Hello World!", 381, 300)
-	love.graphics.print("Hello World!", 379, 300)
-	love.graphics.print("Hello World!", 380, 299)
-	love.graphics.print("Hello World!", 380, 301)
-	
-	love.graphics.print("Hello World!", 382, 300)
-	love.graphics.print("Hello World!", 378, 300)
-	love.graphics.print("Hello World!", 380, 298)
-	love.graphics.print("Hello World!", 380, 302)
-	
-	love.graphics.print("Hello World!", 381, 301)
-	love.graphics.print("Hello World!", 379, 301)
-	love.graphics.print("Hello World!", 379, 299)
-	love.graphics.print("Hello World!", 381, 299)
-	
-	love.graphics.setColor(1, 1, 1, 1)
-	love.graphics.print("Hello World!", 380, 300)
+	drawText("Hello people!", 400, 300)
 end
 
 function love.keypressed(key)
