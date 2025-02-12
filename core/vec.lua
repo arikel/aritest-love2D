@@ -36,11 +36,18 @@ function VecMT:__concat(other)
 	return tostring(self) .. tostring(other)
 end
 
+
+function VecMT:type()
+	return "core.Vec"
+end
+
+
+
 function Vec(x, y)
 	local self = {}
 	setmetatable(self, VecMT)
 	
-	self.type = "Vec"
+	--self.type = "Vec"
 	
 	self.set = function(x, y)
 		self.x = x
@@ -85,7 +92,8 @@ function Vec(x, y)
 		local c = math.cos(angle)
 		local x2 = self.x * c - self.y * s
 		local y2 = self.x * s + self.y * c
-		self.set(x2, y2)
+		--self.set(x2, y2)
+		return Vec(x2, y2)
 	end
 	
 	local x = x or 0

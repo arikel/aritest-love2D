@@ -1,64 +1,45 @@
-width = 800
-height = 600
-success = love.window.setMode( width, height, {} )
-
-local canvas = love.graphics.newCanvas( width, height )
 local rnd = love.math.random
 
-function randRect(nb)
-	love.graphics.setCanvas(canvas)
-	for i = 1, nb do
-		love.graphics.setColor(rnd()*1, rnd()*1, rnd()*1, 1)
-		local x = rnd() * width local y = rnd() * height local w = rnd() * 16 + 2 local h = rnd() * 16 + 16
-		
-		local drawMode = "fill"
-		if rnd()>0.5 then
-			drawMode = "line"
-		end
-		love.graphics.polygon(drawMode, x,y, x+w,y ,x+w, y+h, x,y+h)
-		
-	end
-	
-	local drawMode = "fill"
-	if rnd()>0.5 then
-		drawMode = "line"
-	end
-	love.graphics.arc(drawMode, width*rnd(), height*rnd(), 5 + rnd()*32, rnd(), rnd() + 2*math.pi, 24 )
 
-	love.graphics.setColor(1,1,1,1)
+local core = require("core")
+local gui = require("gui/init")
+local Game = require("game")
+local DungeonRenderer3 = require("dm/dungeonRenderer3")
+
+local width = love.graphics.getWidth()
+local height = love.graphics.getHeight()
+
+local game = Game()
+local dmr = DungeonRenderer3(640,400)
+
+function love.load()
 	
 end
 
-function drawText(text, x, y)
-	love.graphics.setColor(0, 0, 0, 1)
-	love.graphics.print(text, x+1, y)
-	love.graphics.print(text, x-1, y)
-	love.graphics.print(text, x, y-1)
-	love.graphics.print(text, x, y+1)
-	
-	love.graphics.print(text, x+2, y)
-	love.graphics.print(text, x-2, y)
-	love.graphics.print(text, x, y-2)
-	love.graphics.print(text, x, y+2)
-	
-	love.graphics.print(text, x+1, y+1)
-	love.graphics.print(text, x-1, y+1)
-	love.graphics.print(text, x-1, y-1)
-	love.graphics.print(text, x+1, y-1)
-	
-	love.graphics.setColor(1, 1, 1, 1)
-	love.graphics.print(text, x, y)
+function love.update(dt)
+	--game.GUI.update(dt)
+	dmr.update(dt)
 end
-
 
 function love.draw()
-	randRect(5)
-	love.graphics.setCanvas()
-	love.graphics.draw(canvas)
-	
-	drawText("Hello people!", 400, 300)
+	--love.graphics.draw(game.grid.canvas, cx, cy)
+	dmr.draw(31,30)
+	--game.GUI.draw()
 end
 
 function love.keypressed(key)
 	if key == "escape" then love.event.quit() end
+	if key == "a" then
+		
+	end
+	if key == "e" then
+		
+	end
+	if key == "space" then
+		
+	end
+end
+
+function love.mousepressed(x, y, button)
+	game.GUI.mousepressed(x, y, button)
 end

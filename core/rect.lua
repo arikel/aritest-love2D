@@ -51,7 +51,7 @@ local function Rect(x, y, w, h)
 	self.collideRect = function(r)
 		return self.x < r.x2 and r.x < self.x2 and self.y < r.y2 and r.y < self.y2
 	end
-	
+	--print ("Rect created, ", self.x, self.y, self.w, self.h)
 	return self
 end
 

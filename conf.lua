@@ -3,7 +3,7 @@ function love.conf(t)
 	--t.window.height = 0 -- t.screen.height in 0.8.0 and earlier
 	local c = 1
 	if c ==1 then
-		t.window.width = 600
+		t.window.width = 800
 		t.window.height = 600
 		t.window.fullscreen = false
 	else
@@ -14,9 +14,10 @@ function love.conf(t)
 	--t.window.fullscreen = true
 	--t.window.vsync = false
 	t.modules.joystick = true
-	t.modules.physics = false
-	t.title = "Space Colony"
+	t.modules.physics = true
+	t.title = "Aritest"
 	t.author = "Arikel"
-	--t.window.icon = "img/icon.png"
+	t.window.icon = "img/icon.png"
 	--t.version = "0.9.2"
+	--print("Wow, conf imported!")
 end
